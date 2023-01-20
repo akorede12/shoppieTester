@@ -63,12 +63,13 @@ export default function Home() {
   let userAdd = ethers.utils.getAddress(eventData.user)
   let usertext = eventData.userMsg.toString()
   let msgNumb = eventData.messageNo//.toNumber()
+ // msgNumb.toNumber()
 
   // Listening to contract Events with ethers
   function setEvent(){
 
   kontract.on("jiggy", (userAddress, message, messageNumber) => {
-    {setEventData({user: userAddress, userMsg: message, messageNo: messageNumber})}
+    {setEventData({user: userAddress, userMsg: message, messageNo: messageNumber.toNumber()})}
     console.log((userAddress, message, messageNumber)) }
     )
   }
@@ -132,6 +133,7 @@ export default function Home() {
         <p> User Address: {userAdd}</p>
         <p> User Message: {usertext}</p>
         <p> Message Number: {msgNumb}</p>
+        <h2> Return values from contract functions</h2>
         {/* <p> Message Number: {number} </p> */}
       </section>
       </main>
